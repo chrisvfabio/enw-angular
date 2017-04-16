@@ -1,0 +1,24 @@
+<md-toolbar class="mat-elevation-z1" ngClass.sm="toolbar-sm">
+    <button md-icon-button fxHide.gt-sm (click)="toggleMenu()">
+        <md-icon>menu</md-icon>
+    </button>
+
+    <div class="logo">
+        <img src="assets/images/enw_logo.svg" alt="Essential Nordic Walking">
+    </div>
+
+    <div class="nav-items" fxHide.sm fxHide.xs>
+        <button md-button class="active">Home</button>
+        <button md-button>About</button>
+        <button md-button>Services</button>
+        <button md-button>Products</button>
+        <button md-button>FAQs</button>
+    </div>
+
+    <span fxFlex fxHide.sm fxHide.xs></span>
+    
+    <div class="nav-items" fxHide.sm fxHide.xs>
+        <button md-button>Login</button>
+        <button md-button>Logout</button>
+    </div>
+</md-toolbar>

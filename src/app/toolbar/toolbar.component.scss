@@ -1,0 +1,31 @@
+@import '../../theme.scss';
+
+.mat-toolbar {
+    background-color: #fff;
+}
+
+md-toolbar {
+    &.toolbar-sm {
+        position: fixed;
+        top: 0;
+    }
+
+    button[md-button] {
+        height: 100%;
+        font-weight: 400;
+
+        &.active {
+            font-weight: 500;
+            background-color: transparent;
+            border-bottom: 4px solid $primary;
+        }
+    }
+
+    .logo {
+        margin-right: 64px;
+    }
+
+    .nav-items {
+        height: 100%;
+    }
+}
