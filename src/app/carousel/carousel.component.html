@@ -1,0 +1,26 @@
+<div class="carousel">
+  <ul class="slides">
+    <li *ngFor="let slide of slides">
+      <div class="content">
+        <h2>{{slide.title}}</h2>
+        <p [innerHtml]="slide.content"></p>      
+      </div>
+      <img [src]="slide.imageUrl" [alt]="slide.title">
+
+    </li>
+  </ul>
+</div>
+
+<!-- TODO: Create Lib for content carousel -->
+<!--<cf-carousel>
+  <cf-slide>
+    <img cfSlideImage src="" alt="">
+    <div cfSlideContent>
+      <h2 cfSlideTitle></h2>
+      <h3 cfSlideSubtitle></h3>
+    </div>
+  </cf-slide>
+</cf-carousel>-->
+<!--
+<cf-carousel-actions>
+</cf-carousel-actions>-->
