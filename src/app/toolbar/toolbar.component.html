@@ -7,19 +7,19 @@
         <img src="assets/images/enw_logo.svg" alt="Essential Nordic Walking">
     </div>
 
-    <div class="nav-items" fxHide.sm fxHide.xs>
-        <button md-button routerLink="home" routerLinkActive="active">Home</button>
-        <button md-button routerLink="about" routerLinkActive="active">About</button>
-        <button md-button routerLink="services" routerLinkActive="active">Services</button>
-        <button md-button routerLink="products" routerLinkActive="active">Products</button>
+    <div class="nav-items" fxHide.sm fxHide.xs >
+        <button md-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Home</button>
+        <button md-button routerLink="/about" routerLinkActive="active">About</button>
+        <button md-button routerLink="/services" routerLinkActive="active">Services</button>
+        <button md-button routerLink="/products" routerLinkActive="active">Products</button>
         <button md-button>FAQs</button>
     </div>
 
     <span fxFlex fxHide.sm fxHide.xs></span>
 
     <div class="nav-items" fxHide.sm fxHide.xs>
-        <button md-button routerLink="login" routerLinkActive="active">Login</button>
-        <button md-button routerLink="admin" routerLinkActive="active">Admin</button>
-        <button md-button routerLink="logout" routerLinkActive="active">Logout</button>
+        <button md-button routerLink="/login" routerLinkActive="active">Login</button>
+        <button md-button routerLink="/admin" routerLinkActive="active">Admin</button>
+        <button md-button routerLink="/logout" routerLinkActive="active">Logout</button>
     </div>
 </md-toolbar>
