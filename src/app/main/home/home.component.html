@@ -1,3 +1,39 @@
-<p>
-  home works!
-</p>
+ <!-- Hero Banner -->
+<div class="hero" fxLayout="column" fxLayoutAlign="center center">
+  <h1 class="md-title">Essential Nordic Walking</h1>
+  <h2 class="md-subhead">Take walking to the next level</h2>
+</div>
+
+ <!-- Quick Nav Cards -->
+<section fxLayout="column" >
+  <div>
+    <h2 class="heading">Experience Better</h2>
+    <h3 class="sub-heading">Professional help to get you started with Nordic Walking</h3>
+  </div>
+  <div 
+    fxLayout="row" 
+    fxLayout.xs="column" 
+    fxLayoutAlign="start space-around" 
+    fxLayoutGap="16px" 
+    fxLayoutWrap>
+
+    <md-card 
+      class="enw-card hoverable" 
+      *ngFor="let card of cards" 
+      [routerLink]="[card.route.name, card.route.data]"
+      md-ripple
+      fxLayout="column" 
+      fxFlex.xs="100" 
+      fxFlex.sm="45" 
+      fxFlex>
+
+      <img md-card-image [src]="card.imageUrl" [alt]="card.title">
+      <md-card-subtitle>{{card.subTitle}}</md-card-subtitle>
+      <md-card-title>{{card.title}}</md-card-title>
+      <md-card-content fxLayout="column" [innerHtml]="card.content">
+      </md-card-content>
+    </md-card>
+  </div>
+</section>
+
+<enw-carousel></enw-carousel>
