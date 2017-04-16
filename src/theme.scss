@@ -10,11 +10,11 @@
 // hue.
 
 $primary: mat-color($mat-light-green, 700, 1);
-$accent: mat-color($mat-pink, 500, 1);
+$accent: mat-color($mat-grey, 800, 1);
 $warn: mat-color($mat-red, 500, 1);
 
 $enw-primary: mat-palette($mat-light-green, 700);
-$enw-accent:  mat-palette($mat-pink, A200, A100, A400);
+$enw-accent:  mat-palette($mat-grey, 800);
 
 // The warn palette is optional (defaults to red).
 $enw-warn:    mat-palette($mat-red);
