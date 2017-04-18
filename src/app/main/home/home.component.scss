@@ -1,76 +1,77 @@
 @import '~@angular/material/theming';
+@import '../../../theme.scss';
 
 .hero {
-      background-color: #88a13e;
-      height: 300px;
+    background-color: $primary;
+    height: 300px;
 
-      h1, h2 {
-        color: #fff;
-        margin: 0;
-        transition: font-size ease 0.2s;
-      }
-
-      h1 {
-        font-weight: 500;
-        font-size: 72px;
-        text-align: center;
-      }
-
-      h2 {
-        margin-top: 32px;
-        font-weight: 300;
-        font-size: 36px;
-        text-align: center;
-      }
-
-      @media only screen and (max-width: 768px) {
-        h1 {
-          font-size: 48px;
-        }
-        h2 {
-          font-size: 20px;
-        }
+    h1, h2 {
+      color: #fff;
+      margin: 0;
+      transition: font-size ease 0.2s;
     }
-  }
 
-section {
-    padding: 32px;
-    max-width: 968px;
-    margin: 0 auto;
-
-    .heading, .sub-heading {
+    h1 {
+      font-weight: 500;
+      font-size: 72px;
       text-align: center;
     }
 
-    .heading {
+    h2 {
+      margin-top: 32px;
       font-weight: 300;
-      color: #000;
-      font-size: 44px;
-      margin: 0;
-    }
-
-    .sub-heading {
-      font-weight: 400;
-      color: #9b9b9b;
-      font-size: 16px;
-      margin-top: 24px;
+      font-size: 36px;
+      text-align: center;
     }
 
     @media only screen and (max-width: 768px) {
-      section {
-        padding: 32px 16px;
+      h1 {
+        font-size: 48px;
       }
-      .heading1 {
-        font-size: 36px;
+      h2 {
+        font-size: 20px;
       }
-      .heading2 {
-        font-size: 14px;
-      }
-      section md-content + md-content {
-        padding-top: 16px;
-      }
+  }
+}
+
+section {
+  padding: 32px;
+  max-width: 968px;
+  margin: 0 auto;
+
+  .heading, .sub-heading {
+    text-align: center;
+  }
+
+  .heading {
+    font-weight: 300;
+    color: #000;
+    font-size: 44px;
+    margin: 0;
+  }
+
+  .sub-heading {
+    font-weight: 400;
+    color: #9b9b9b;
+    font-size: 16px;
+    margin-top: 24px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    section {
+      padding: 32px 16px;
+    }
+    .heading1 {
+      font-size: 36px;
+    }
+    .heading2 {
+      font-size: 14px;
+    }
+    section md-content + md-content {
+      padding-top: 16px;
     }
   }
+}
 
 md-card.enw-card {
   padding: 12px;
@@ -91,3 +92,19 @@ md-card.enw-card {
     font-size: 16px;
   }
 } 
+
+.register-form {
+  width: 100%;
+  max-width: 448px;
+  margin: 0 auto;
+
+  .form-errors {
+    color: $warn;
+  }
+
+  .submit {
+    height: 48px;
+    background-color: $primary;
+    color: #fff;
+  }
+}

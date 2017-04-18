@@ -1,31 +1,19 @@
- <!-- Hero Banner -->
+<!-- Hero Banner -->
 <div class="hero" fxLayout="column" fxLayoutAlign="center center">
   <h1 class="md-title">Essential Nordic Walking</h1>
   <h2 class="md-subhead">Take walking to the next level</h2>
 </div>
 
- <!-- Quick Nav Cards -->
-<section fxLayout="column" >
+<!-- Quick Nav Cards -->
+<section fxLayout="column">
   <div>
     <h2 class="heading">Experience Better</h2>
     <h3 class="sub-heading">Professional help to get you started with Nordic Walking</h3>
   </div>
-  <div 
-    fxLayout="row" 
-    fxLayout.xs="column" 
-    fxLayoutAlign="start space-around" 
-    fxLayoutGap="16px" 
-    fxLayoutWrap>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start space-around" fxLayoutGap="16px" fxLayoutWrap>
 
-    <md-card 
-      class="enw-card hoverable" 
-      *ngFor="let card of cards" 
-      [routerLink]="[card.route.name, card.route.data]"
-      md-ripple
-      fxLayout="column" 
-      fxFlex.xs="100" 
-      fxFlex.sm="45" 
-      fxFlex>
+    <md-card class="enw-card hoverable" *ngFor="let card of cards" [routerLink]="[card.route.name, card.route.data]" md-ripple
+      fxLayout="column" fxFlex.xs="100" fxFlex.sm="45" fxFlex>
 
       <img md-card-image [src]="card.imageUrl" [alt]="card.title">
       <md-card-subtitle>{{card.subTitle}}</md-card-subtitle>
@@ -36,4 +24,105 @@
   </div>
 </section>
 
+
 <enw-carousel></enw-carousel>
+
+<!-- Register Interest -->
+<section fxLayout="column">
+  <div>
+    <h2 class="heading">Register Your Interest</h2>
+    <h3 class="sub-heading">Up for a new challenge or interested in finding out more?</h3>
+  </div>
+
+  <div fxLayout="column">
+    <form [formGroup]="registerForm" (ngSubmit)="registerSubmit(registerForm)" class="register-form" fxLayout="column" fxLayoutGap="16px">
+      
+      <!-- First Name -->
+      <md-input-container [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.controls.firstName) }">
+        <input mdInput formControlName="firstName" placeholder="First Name" autocomplete="off">
+        <md-hint *ngIf="hasFieldError(registerForm, registerForm.controls.firstName) && registerForm.controls.firstName.hasError('required')">
+          Please enter your first name.
+        </md-hint>
+      </md-input-container>
+
+      <!-- Last Name -->
+      <md-input-container [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.controls.lastName) }">
+        <input mdInput formControlName="lastName" placeholder="Last Name" autocomplete="off">
+          <md-hint *ngIf="hasFieldError(registerForm, registerForm.controls.lastName) && registerForm.controls.lastName.hasError('required')">
+            Please enter your last name.
+          </md-hint>
+      </md-input-container>
+
+      <!-- Email -->
+      <md-input-container [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.controls.email) }">
+        <input mdInput formControlName="email" placeholder="Email" autocomplete="off">
+          <md-hint *ngIf="hasFieldError(registerForm, registerForm.controls.email) && registerForm.controls.email.hasError('required')">
+            Please enter your email address.
+          </md-hint>
+          <md-hint *ngIf="hasFieldError(registerForm, registerForm.controls.email) && registerForm.controls.email.hasError('pattern')">
+            Please enter a valid email address.
+          </md-hint>
+      </md-input-container>
+
+      <!-- Phone -->
+      <md-input-container [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.controls.phone) }">
+        <input mdInput formControlName="phone" placeholder="Phone (Optional)" autocomplete="off">
+      </md-input-container>
+
+      <!-- Preferred Phone Time -->
+      <md-input-container [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.controls.phoneTime) }">
+        <input mdInput formControlName="phoneTime" placeholder="Preferred Phone Time (Optional)" autocomplete="off">
+      </md-input-container>
+
+      <button md-raised-button color="primary">SEND ENQUIRY</button>
+
+    </form>
+
+
+    <!--<form name="registerForm" class="register-form" fxLayout="column" ng-submit="registerForm.$valid && vm.registerSubmit()" novalidate>
+      First Name 
+      <md-input-container flex md-is-error="registerForm.firstName.$invalid && (registerForm.$submitted || registerForm.firstName.$dirty)">
+        <label>First Name</label>
+        <input name="firstName" type="text" ng-model="vm.register.firstName" ng-requiredd="true">
+        <div ng-messages="registerForm.firstName.$error" ng-if="registerForm.$submitted || registerForm.firstName.$touched">
+          <div ng-message="required">Please enter your first name</div>
+        </div>
+      </md-input-container>
+
+      Last Name 
+      <md-input-container flex md-is-error="registerForm.lastName.$invalid && (registerForm.$submitted || registerForm.lastName.$dirty)">
+        <label>Last Name</label>
+        <input name="lastName" type="text" ng-model="vm.register.lastName" ng-required="true">
+        <div ng-messages="registerForm.lastName.$error" ng-if="registerForm.$submitted || registerForm.lastName.$touched">
+          <div ng-message="required">Please enter your last name</div>
+        </div>
+      </md-input-container>
+
+      Email 
+      <md-input-container flex md-is-error="registerForm.email.$invalid && (registerForm.$submitted || registerForm.email.$dirty)">
+        <label>Email</label>
+        <input name="email" type="email" ng-model="vm.register.email" ng-required="true">
+        <div ng-messages="registerForm.email.$error" ng-if="registerForm.$submitted || registerForm.email.$touched">
+          <div ng-message="required">Please enter your email</div>
+        </div>
+      </md-input-container>
+
+      Phone 
+      <md-input-container flex md-is-error="registerForm.phone.$invalid && (registerForm.$submitted || registerForm.phone.$dirty)">
+        <label>Phone (Optional)</label>
+        <input name="phone" type="text" ng-model="vm.register.phone">
+      </md-input-container>
+
+      Preferred Call Time 
+      <md-input-container flex md-is-error="registerForm.preferredPhoneTime.$invalid && (registerForm.$submitted || registerForm.preferredPhoneTime.$dirty)">
+        <label>Preferred Phone Time (Optional)</label>
+        <input name="preferredPhoneTime" type="text" ng-model="vm.register.preferredPhoneTime" placeholder="Mon - Fri, 5pm - 7pm">
+      </md-input-container>
+
+      <br>
+      <br>
+
+      <md-button class="submit" type="submit" ng-disabled="vm.registerValidating">Send Enquiry</md-button>
+    </form>-->
+  </div>
+</section>

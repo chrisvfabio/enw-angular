@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'enw-home',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  registerForm: FormGroup;
   cards: InfoCard[];
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     this.cards = [
       {
         title: 'Have-a-Go Sessions',
@@ -57,6 +59,23 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.registerForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', []],
+      phoneTime: ['', []]
+    });
+  }
+
+  registerSubmit(formGroup: FormGroup) {
+    if (formGroup.valid) {
+      alert('Submit');
+    }
+  }
+
+  hasFieldError(formGroup: FormGroup, control: FormControl) {
+    return control.invalid && formGroup.invalid && control.touched;
   }
 }
 
