@@ -9,12 +9,12 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 
-$primary: mat-color($mat-light-green, 700, 1);
-$accent: mat-color($mat-grey, 800, 1);
+$primary: mat-color($mat-green, 600, 1);
+$accent: mat-color($mat-deep-orange, 500, 1);
 $warn: mat-color($mat-red, 500, 1);
 
-$enw-primary: mat-palette($mat-light-green, 700);
-$enw-accent:  mat-palette($mat-grey, 800);
+$enw-primary: mat-palette($mat-green, 600);
+$enw-accent:  mat-palette($mat-deep-orange, 500);
 
 // The warn palette is optional (defaults to red).
 $enw-warn:    mat-palette($mat-red);
