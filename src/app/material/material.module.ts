@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MdButtonModule, MdRippleModule, MdToolbarModule, MdIconModule, MdCardModule } from '@angular/material';
+import { MdButtonModule, MdRippleModule, MdToolbarModule, MdIconModule, MdCardModule, MdInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -9,7 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdToolbarModule,
     MdIconModule,
     MdCardModule,
-    MdRippleModule
+    MdRippleModule,
+    MdInputModule
   ]
 })
 export class MaterialModule { }

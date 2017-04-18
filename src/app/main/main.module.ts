@@ -11,10 +11,13 @@ import { LogoutComponent } from './logout/logout.component';
 import { MaterialModule } from 'app/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CarouselModule } from 'app/carousel/carousel.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule,
     MainRoutingModule,
