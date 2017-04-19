@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
   registerForm: FormGroup;
   cards: InfoCard[];
 
+  submittingForm = false;
+
   constructor(private fb: FormBuilder) {
     this.cards = [
       {
@@ -71,6 +73,9 @@ export class HomeComponent implements OnInit {
   registerSubmit(formGroup: FormGroup) {
     if (formGroup.valid) {
       alert('Submit');
+      this.submittingForm = true;
+
+      // TODO: Call EmailService
     }
   }
 

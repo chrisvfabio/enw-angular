@@ -1,9 +1,12 @@
 @import '~@angular/material/theming';
 @import '../../../theme.scss';
 
+$whiteBackground: #fafafa;
+
 .hero {
     background-color: $primary;
     height: 300px;
+    margin-top: 64px;
 
     h1, h2 {
       color: #fff;
@@ -74,7 +77,6 @@ section {
 }
 
 md-card.enw-card {
-  padding: 12px;
   margin: 16px 0;
   outline: 0;
 
@@ -97,6 +99,7 @@ md-card.enw-card {
   width: 100%;
   max-width: 448px;
   margin: 0 auto;
+  
 
   .form-errors {
     color: $warn;
@@ -106,5 +109,46 @@ md-card.enw-card {
     height: 48px;
     background-color: $primary;
     color: #fff;
+  }
+
+  md-input-container {
+    margin: 8px 0;
+  }
+
+  button {
+    background-color: $primary;
+    color: #fff;
+    height: 48px;
+    transition: background-color ease-in 150ms;
+    transition: color ease-in 150ms;
+
+    &[disabled] {
+      background-color: #999;
+      color: #fff;
+      cursor: not-allowed;
+    }
+  }
+
+  .input-container {
+    position: relative;
+  }
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: $whiteBackground;
+
+  md-spinner {
+    width: 48px;
+  }
+
+  span {
+    color: #777;
+    font-weight: 500;
   }
 }
