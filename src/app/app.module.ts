@@ -11,6 +11,7 @@ import { MaterialModule } from 'app/material/material.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FooterComponent } from './footer/footer.component';
+import { BackendService } from './shared/backend.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { FooterComponent } from './footer/footer.component';
     FlexLayoutModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [BackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

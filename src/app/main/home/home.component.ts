@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { BackendService } from 'app/shared/backend.service';
 
 @Component({
   selector: 'enw-home',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
 
   submittingForm = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private backend: BackendService) {
     this.cards = [
       {
         title: 'Have-a-Go Sessions',
