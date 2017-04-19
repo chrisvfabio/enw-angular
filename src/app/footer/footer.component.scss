@@ -1,0 +1,38 @@
+footer {
+    background-color: #484848;
+    color: #9b9b9b;
+    padding: 32px 16px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+        text-align: left;
+        padding: 8px 16px;
+        margin-right: 16px;
+
+        a {
+            color: #9b9b9b;
+            text-decoration: none;
+
+            &:hover,
+            .active {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.divider {
+    height: 100%;
+    width: 1px;
+    background-color: #9b9b9b;
+    margin: 0px 16px;
+}
+
+.copyright {
+    padding: 16px 0 8px 0;
+    font-size: 14px;
+}
