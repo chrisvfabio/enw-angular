@@ -5,10 +5,9 @@
 }
 
 md-toolbar {
-    &.toolbar-sm {
-        position: fixed;
-        top: 0;
-    }
+    position: fixed;
+    top: 0;
+    z-index: 99;
 
     button[md-button] {
         height: 100%;
