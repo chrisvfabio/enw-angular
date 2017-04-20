@@ -1,0 +1,31 @@
+@import '../../../theme.scss';
+
+header {
+    background-color: $primary;
+}
+
+section {
+
+    &:nth-child(odd) {
+        background-color: #eee;
+    }
+}
+
+.avatar {
+    border-radius: 100%;
+    max-width: 300px;
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 28px;
+    margin: 16px 0 0 0;
+}
+
+h5 {
+    font-weight: 500;
+    color: #333;
+    font-size: 18px;
+    margin: 8px 0 0 0;
+    text-align: center;
+}
