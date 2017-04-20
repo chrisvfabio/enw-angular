@@ -12,6 +12,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FooterComponent } from './footer/footer.component';
 import { BackendService } from './shared/backend.service';
+import { MainModule } from 'app/main/main.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BackendService } from './shared/backend.service';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MainModule // Don't lazy load
   ],
   providers: [BackendService],
   bootstrap: [AppComponent]
