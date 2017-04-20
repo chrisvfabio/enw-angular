@@ -8,7 +8,20 @@
             <div class="toolbar-margin"></div>
             <md-nav-list>
                 <h3 md-subheader>Navigation</h3>
-                <a md-list-item>Home</a>
+                <a md-list-item routerLink="/" (click)="sidenav.close()">Home</a>
+                <a md-list-item routerLink="/about" (click)="sidenav.close()">About</a>
+                <a md-list-item routerLink="/services" (click)="sidenav.close()">Services</a>
+                <a md-list-item routerLink="/products" (click)="sidenav.close()">Products</a>
+                <a md-list-item  href="http://www.mynordicsports.com.au/index.php/faq/" target="_blank" (click)="sidenav.close()">FAQs</a>
+                
+                <span>
+                    <md-divider></md-divider>
+                    <a md-list-item routerLink="/admin/dashboard" (click)="sidenav.close()">Dashboard</a>
+                </span>
+
+                <md-divider></md-divider>
+                <a md-list-item routerLink="/login" (click)="sidenav.close()">Login</a>
+                <a md-list-item routerLink="/logout" (click)="sidenav.close()">Logout</a>
             </md-nav-list>
         </md-sidenav>
         <div class="content toolbar-margin">
