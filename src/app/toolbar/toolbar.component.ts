@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'enw-toolbar',
@@ -7,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
+  @Output() menuToggle = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
   toggleMenu() {
-
+    this.menuToggle.emit(true);
   }
 }

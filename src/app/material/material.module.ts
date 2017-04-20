@@ -8,7 +8,8 @@ import {
   MdCardModule,
   MdInputModule,
   MdProgressSpinnerModule,
-  MdSidenavModule
+  MdSidenavModule,
+  MdListModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdRippleModule,
     MdInputModule,
     MdProgressSpinnerModule,
-    MdSidenavModule
+    MdSidenavModule,
+    MdListModule
   ]
 })
 export class MaterialModule { }
