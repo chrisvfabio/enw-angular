@@ -1,0 +1,26 @@
+md-sidenav-container {
+  margin: 0;
+  width: 100%;
+  height: calc(100% - 64px);
+}
+
+md-sidenav {
+  width: 300px;
+}
+
+.content {
+  margin-top: 64px;
+  min-height: 100%;
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+  .content {
+    margin-top: 56px;
+  }
+}
+
+@media (max-width: 960px) and (orientation: landscape) {
+  .content {
+    margin-top: 48px;
+  }
+}
