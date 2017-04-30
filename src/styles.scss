@@ -109,3 +109,20 @@ section {
     }
   }
 }
+
+
+
+md-dialog-container {
+  padding: 0 !important;
+  max-width: calc(100vw - 16px) !important;
+}
+
+// .cdk-overlay-pane {
+//   width: 100% !important;
+// }
+
+@media only screen and (max-width: 768px) { 
+ .cdk-overlay-pane {
+    width: 100% !important;
+  } 
+}
