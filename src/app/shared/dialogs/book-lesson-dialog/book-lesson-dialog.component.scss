@@ -52,3 +52,27 @@ md-card {
   max-height: 256px;
   overflow-y: auto;
 }
+
+.confirmation {
+  padding: 16px 0;
+}
+
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+
+  md-spinner {
+    width: 48px;
+  }
+
+  span {
+    color: #777;
+    font-weight: 500;
+  }
+}

@@ -9,6 +9,8 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 
+$whiteBackground: #fafafa;
+
 $primary: mat-color($mat-green, 600, 1);
 $accent: mat-color($mat-deep-orange, 500, 1);
 $warn: mat-color($mat-red, 500, 1);
