@@ -65,9 +65,16 @@ body {
 }
 
 section {
-  padding: 32px;
-  max-width: 968px;
-  margin: 0 auto;
+    padding: 32px;
+  
+  .wrapper {
+    max-width: 968px;
+    margin: 0 auto;
+  }
+
+  .wrapper-fluid {
+    max-width: 100%;
+  }
 
   .heading, .sub-heading {
     text-align: center;

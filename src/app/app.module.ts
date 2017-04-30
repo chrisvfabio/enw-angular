@@ -18,7 +18,7 @@ import { MainModule } from 'app/main/main.module';
   declarations: [
     AppComponent,
     ToolbarComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
