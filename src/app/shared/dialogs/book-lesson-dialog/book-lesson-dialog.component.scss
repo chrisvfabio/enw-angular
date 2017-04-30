@@ -1,0 +1,54 @@
+@import '../../../../theme.scss';
+
+.content {
+    padding: 16px;
+}
+
+form { 
+  width: 100%;
+  max-width: 448px;
+  margin: 0 auto;
+  
+
+  .form-errors {
+    color: $warn;
+  }
+
+  .submit {
+    height: 48px;
+    background-color: $primary;
+    color: #fff;
+  }
+
+  md-input-container {
+    margin: 8px 0;
+  }
+
+  button {
+    background-color: $accent;
+    color: #fff;
+    height: 48px;
+    transition: background-color ease-in 150ms;
+    transition: color ease-in 150ms;
+
+    &[disabled] {
+      background-color: #999;
+      color: #fff;
+      cursor: not-allowed;
+    }
+  }
+
+  .input-container {
+    position: relative;
+  }
+}
+
+.radio-hire-label {
+  color: rgba(0, 0, 0, 0.38);
+  padding: 16px 0;
+}
+
+md-card {
+  max-height: 256px;
+  overflow-y: auto;
+}

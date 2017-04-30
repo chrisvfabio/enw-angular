@@ -12,6 +12,7 @@ import { MaterialModule } from 'app/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CarouselModule } from 'app/carousel/carousel.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BookLessonDialogComponent } from 'app/shared/dialogs/book-lesson-dialog/book-lesson-dialog.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MainRoutingModule,
     CarouselModule
   ],
-  declarations: [HomeComponent, AboutComponent, ServicesComponent, ProductsComponent, LoginComponent, LogoutComponent]
+  declarations: [
+    HomeComponent,
+    AboutComponent,
+    ServicesComponent,
+    ProductsComponent,
+    LoginComponent,
+    LogoutComponent,
+  ],
+  bootstrap: [
+  ]
 })
 export class MainModule { }

@@ -1,0 +1,76 @@
+<md-toolbar color="primary">
+  <div>
+    Confirm Booking
+  </div>
+  <span fxFlex></span>
+  <div>
+    <button md-icon-button md-dialog-close>
+      <md-icon>close</md-icon>
+    </button>
+  </div>
+</md-toolbar>
+
+<div fxLayout="column" class="content">
+
+    <div class="confirmation">
+      <md-card>
+        <md-card-title>{{lesson.name}}</md-card-title>
+        <md-card-content [innerHtml]="lesson.content">
+
+        </md-card-content>
+      </md-card>
+
+    </div>
+
+      <form [formGroup]="bookLessonForm" (ngSubmit)="bookLessonSubmit(bookLessonForm)" fxLayout="column" fxLayoutGap="16px">
+        <div class="input-container" fxLayout="column">
+          <!-- Loading -->
+          <div class="loading-overlay" [fxShow]="submittingForm" fxLayout="column" fxLayoutAlign="center center">
+            <md-spinner color="accent"></md-spinner>
+            <span>Submitting Form....</span>
+          </div>
+
+          <!-- First Name -->
+          <md-input-container [ngClass]="{ 'form-errors': hasFieldError(bookLessonForm, bookLessonForm.controls.name) }">
+            <input mdInput formControlName="name" placeholder="Name" autocomplete="off">
+            <md-hint *ngIf="hasFieldError(bookLessonForm, bookLessonForm.controls.name) && bookLessonForm.controls.name.hasError('required')">
+              Please enter your name.
+            </md-hint>
+          </md-input-container>
+
+          <!-- Email -->
+          <md-input-container [ngClass]="{ 'form-errors': hasFieldError(bookLessonForm, bookLessonForm.controls.email) }">
+            <input mdInput formControlName="email" placeholder="Email" autocomplete="off">
+            <md-hint *ngIf="hasFieldError(bookLessonForm, bookLessonForm.controls.email) && bookLessonForm.controls.email.hasError('required')">
+              Please enter your email address.
+            </md-hint>
+            <md-hint *ngIf="hasFieldError(bookLessonForm, bookLessonForm.controls.email) && bookLessonForm.controls.email.hasError('pattern')">
+              Please enter a valid email address.
+            </md-hint>
+          </md-input-container>
+
+          <!-- Phone -->
+          <md-input-container [ngClass]="{ 'form-errors': hasFieldError(bookLessonForm, bookLessonForm.controls.phone) }">
+            <input mdInput formControlName="phone" placeholder="Phone (Optional)" autocomplete="off">
+          </md-input-container>
+
+          <!-- Hire Equipment -->
+          <div class="radio-hire-label">Hire Equipment?</div>
+          <md-radio-group ([ngModel])="hireEquipment" fxLayout="column" fxLayoutGap="16px">
+            <md-radio-button value="1">
+              Yes
+            </md-radio-button>
+            <md-radio-button value="0">
+              No
+            </md-radio-button>
+          </md-radio-group>
+
+        </div>
+        <br><br>
+        <button md-button [disabled]="submittingForm">SUBMIT BOOKING</button>
+      </form>
+    </div>
+
+<md-dialog-actions>
+
+</md-dialog-actions>

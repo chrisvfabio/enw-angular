@@ -9,7 +9,9 @@ import {
   MdInputModule,
   MdProgressSpinnerModule,
   MdSidenavModule,
-  MdListModule
+  MdListModule,
+  MdDialogModule,
+  MdRadioModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -23,7 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MdInputModule,
     MdProgressSpinnerModule,
     MdSidenavModule,
-    MdListModule
+    MdListModule,
+    MdDialogModule,
+    MdRadioModule
   ]
 })
 export class MaterialModule { }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,16 +13,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FooterComponent } from './footer/footer.component';
 import { BackendService } from './shared/backend.service';
 import { MainModule } from 'app/main/main.module';
+import { BookLessonDialogComponent } from './shared/dialogs/book-lesson-dialog/book-lesson-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     FooterComponent,
+    BookLessonDialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     BrowserAnimationsModule,
     MaterialModule,
@@ -30,7 +33,12 @@ import { MainModule } from 'app/main/main.module';
     AppRoutingModule,
     MainModule // Don't lazy load
   ],
-  providers: [BackendService],
-  bootstrap: [AppComponent]
+  providers: [
+    BackendService
+  ],
+  entryComponents: [
+    BookLessonDialogComponent
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
