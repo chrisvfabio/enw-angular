@@ -1,4 +1,14 @@
-# Complete starter seed project for Angular 2
+# Essential Nordic Walking
+
+## Dev Notes
+> This project uses webpack to build and bundle code. `scp` secure copy & paste is used to deploy files to box in prod. 
+
+1. Restore deps: `yarn`
+1. Working locally: `yarn start` => localhost:3000 (Client-side rendering)
+2. Working locally (universal): `yarn run universal:aot` => localhost:8000 (Server-side rendering)
+3. Deploy to prod (universal): `yarn run build:universal:aot`, `scp -r dist/ root@188.166.231.48:/var/www/html2`
+
+## (Cloned Repo Notes) Complete starter seed project for Angular 2
 
 ## Material Branch with Universal (Server-side rendering) support
 
