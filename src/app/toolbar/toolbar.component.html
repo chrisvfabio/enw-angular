@@ -1,25 +1,28 @@
 <md-toolbar class="mat-elevation-z1">
-    <button md-icon-button fxHide.gt-sm (click)="toggleMenu()">
+  <!--fxHide.gt-sm-->
+  <button md-icon-button class="hidden show-xs show-sm" (click)="toggleMenu()">
         <md-icon>menu</md-icon>
     </button>
+  <div class="logo">
+    <img src="assets/images/enw_logo.svg" alt="Essential Nordic Walking">
+  </div>
 
-    <div class="logo">
-        <img src="assets/images/enw_logo.svg" alt="Essential Nordic Walking">
-    </div>
+  <!-- fxHide.sm fxHide.xs -->
+  <div class="nav-items hidden-sm hidden-xs">
+    <a md-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a md-button routerLink="/about" routerLinkActive="active">About</a>
+    <a md-button routerLink="/services" routerLinkActive="active">Services</a>
+    <!--<a md-button routerLink="/products" routerLinkActive="active">Products</a>-->
+    <a md-button href="http://www.mynordicsports.com.au/index.php/faq/" target="_blank">FAQs</a>
+  </div>
 
-    <div class="nav-items" fxHide.sm fxHide.xs >
-        <button md-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Home</button>
-        <button md-button routerLink="/about" routerLinkActive="active">About</button>
-        <button md-button routerLink="/services" routerLinkActive="active">Services</button>
-        <button md-button routerLink="/products" routerLinkActive="active">Products</button>
-        <button md-button href="http://www.mynordicsports.com.au/index.php/faq/" target="_blank">FAQs</button>
-    </div>
+  <!-- fxFlex fxHide.sm fxHide.xs-->
+  <span style="flex: 1 1 auto;" class="hidden-sm hidden-xs"></span>
 
-    <span fxFlex fxHide.sm fxHide.xs></span>
-
-    <div class="nav-items" fxHide.sm fxHide.xs>
-        <button md-button routerLink="/login" routerLinkActive="active">Login</button>
-        <button md-button routerLink="/admin" routerLinkActive="active">Admin</button>
-        <button md-button routerLink="/logout" routerLinkActive="active">Logout</button>
-    </div>
+  <!--fxHide.sm fxHide.xs-->
+  <div class="nav-items hidden-sm hidden-xs">
+    <!--<a md-button routerLink="/login" routerLinkActive="active">Login</a>-->
+    <!--<a md-button routerLink="/admin" routerLinkActive="active">Admin</a>-->
+    <!--<a md-button routerLink="/logout" routerLinkActive="active">Logout</a>-->
+  </div>
 </md-toolbar>

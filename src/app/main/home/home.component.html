@@ -1,91 +1,85 @@
 <!-- Hero Banner -->
-<div class="hero" fxLayout="column" fxLayoutAlign="center center">
-  <h1>Essential Nordic Walking</h1>
-  <h2>Take walking to the next level</h2>
+<!--fxLayout="column" fxLayoutAlign="center center"-->
+<div class="hero">
+  <div class="grid grid-header">
+    <div class="col-12">
+      <h1>Essential Nordic Walking</h1>
+      <h2>Take walking to the next level</h2>
+    </div>
+  </div>
 </div>
 
 <!-- Quick Nav Cards -->
-<section fxLayout="column">
-  <div class="wrapper">
-    <div>
-      <h2 class="heading">Experience Better</h2>
-      <h3 class="sub-heading">Professional help to get you started with Nordic Walking</h3>
-    </div>
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start space-around" fxLayoutGap="16px" fxLayoutWrap>
+<!-- fxLayout="column"-->
+<section>
+  <h2 class="heading">Experience Better</h2>
+  <h3 class="sub-heading">Professional help to get you started with Nordic Walking</h3>
 
-      <md-card class="enw-card hoverable" *ngFor="let card of cards" [routerLink]="[card.route.name, card.route.data]" md-ripple
-        fxLayout="column" fxFlex.xs="100" fxFlex.sm="45" fxFlex>
-
+  <div class="grid grid-3_sm-1_md-2_xs-1">
+    <div class="col" *ngFor="let card of cards">
+      <md-card class="enw-card hoverable" [routerLink]="[card.route.name, card.route.data]" md-ripple>
         <img md-card-image [src]="card.imageUrl" [alt]="card.title">
         <md-card-subtitle>{{card.subTitle}}</md-card-subtitle>
         <md-card-title>{{card.title}}</md-card-title>
-        <md-card-content fxLayout="column" [innerHtml]="card.content">
+        <md-card-content [innerHtml]="card.content">
         </md-card-content>
       </md-card>
     </div>
   </div>
+
 </section>
 
 
 <enw-carousel></enw-carousel>
 
 <!-- Register Interest -->
-<section fxLayout="column">
-  <div class="wrapper">
-    <div>
+<!-- fxLayout="column"-->
+<section>
+  <div class="grid grid-header">
+    <div class="col-12">
       <h2 class="heading">Register Your Interest</h2>
       <h3 class="sub-heading">Up for a new challenge or interested in finding out more?</h3>
     </div>
-
-    <div fxLayout="column">
-      <form [formGroup]="registerForm" (ngSubmit)="registerSubmit(registerForm)" class="register-form" fxLayout="column" fxLayoutGap="16px">
-        <div class="input-container" fxLayout="column">
-          <!-- Loading -->
-          <div class="loading-overlay" [fxShow]="submittingForm" fxLayout="column" fxLayoutAlign="center center">
-            <md-spinner color="accent"></md-spinner>
-            <span>Submitting Form....</span>
-          </div>
-
-          <!-- First Name -->
-          <md-input-container [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.controls.firstName) }">
-            <input mdInput formControlName="firstName" placeholder="First Name" autocomplete="off">
-            <md-hint *ngIf="hasFieldError(registerForm, registerForm.controls.firstName) && registerForm.controls.firstName.hasError('required')">
-              Please enter your first name.
-            </md-hint>
-          </md-input-container>
-
-          <!-- Last Name -->
-          <md-input-container [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.controls.lastName) }">
-            <input mdInput formControlName="lastName" placeholder="Last Name" autocomplete="off">
-            <md-hint *ngIf="hasFieldError(registerForm, registerForm.controls.lastName) && registerForm.controls.lastName.hasError('required')">
-              Please enter your last name.
-            </md-hint>
-          </md-input-container>
-
-          <!-- Email -->
-          <md-input-container [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.controls.email) }">
-            <input mdInput formControlName="email" placeholder="Email" autocomplete="off">
-            <md-hint *ngIf="hasFieldError(registerForm, registerForm.controls.email) && registerForm.controls.email.hasError('required')">
-              Please enter your email address.
-            </md-hint>
-            <md-hint *ngIf="hasFieldError(registerForm, registerForm.controls.email) && registerForm.controls.email.hasError('pattern')">
-              Please enter a valid email address.
-            </md-hint>
-          </md-input-container>
-
-          <!-- Phone -->
-          <md-input-container [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.controls.phone) }">
-            <input mdInput formControlName="phone" placeholder="Phone (Optional)" autocomplete="off">
-          </md-input-container>
-
-          <!-- Preferred Phone Time -->
-          <md-input-container [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.controls.phoneTime) }">
-            <input mdInput formControlName="phoneTime" placeholder="Preferred Phone Time (Optional)" autocomplete="off">
-          </md-input-container>
-        </div>
-
-        <button md-button [disabled]="submittingForm" color="primary">SEND ENQUIRY</button>
-      </form>
-    </div>
   </div>
+
+
+  <form *ngIf="isBrowser" [formGroup]="registerForm" (ngSubmit)="registerSubmit(registerForm)" class="grid register-form">
+
+    <div class="loading-overlay" *ngIf="submittingForm">
+      <md-spinner color="accent"></md-spinner>
+      <span>Submitting Form....</span>
+    </div>
+    <div class="col-12"><p>Contact Heather via email at <a href="mailto:heather@essentialnordicwalking.com.au">heather@essentialnordicwalking.com.au</a> or fill in the form below.</p></div>
+
+    <!-- First Name -->
+    <md-input-container class="col-12" [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.get('name')) }">
+      <input mdInput formControlName="name" placeholder="Name" autocomplete="off">
+      <md-hint *ngIf="hasFieldError(registerForm, registerForm.get('name')) && registerForm.get('name').hasError('required')">
+        Please enter your name.
+      </md-hint>
+    </md-input-container>
+
+    <!-- Email -->
+    <md-input-container class="col-12" [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.get('email')) }">
+      <input mdInput formControlName="email" placeholder="Email" autocomplete="off">
+      <md-hint *ngIf="hasFieldError(registerForm, registerForm.get('email')) && registerForm.get('email').hasError('required')">
+        Please enter your email address.
+      </md-hint>
+      <md-hint *ngIf="hasFieldError(registerForm, registerForm.get('email')) && registerForm.get('email').hasError('pattern')">
+        Please enter a valid email address.
+      </md-hint>
+    </md-input-container>
+
+    <!-- Phone -->
+    <md-input-container class="col-12" [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.get('phone')) }">
+      <input mdInput formControlName="phone" placeholder="Phone (Optional)" autocomplete="off">
+    </md-input-container>
+
+    <!-- Preferred Phone Time -->
+    <md-input-container class="col-12" [ngClass]="{ 'form-errors': hasFieldError(registerForm, registerForm.get('phoneTime')) }">
+      <input mdInput formControlName="phoneTime" placeholder="Preferred Phone Time (Optional)" autocomplete="off">
+    </md-input-container>
+
+    <button md-button [disabled]="submittingForm">SEND ENQUIRY</button>
+  </form>
 </section>

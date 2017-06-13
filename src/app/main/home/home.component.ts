@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { BackendService } from 'app/shared/backend.service';
+import { Observable } from 'rxjs/Rx';
+import { Http } from '@angular/http';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'enw-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
 
   registerForm: FormGroup;
@@ -15,7 +19,9 @@ export class HomeComponent implements OnInit {
   submittingForm = false;
 
   constructor(private fb: FormBuilder,
-              private backend: BackendService) {
+    private http: Http,
+    private snackBar: MdSnackBar,
+    @Inject(PLATFORM_ID) public platformId: Object) {
     this.cards = [
       {
         title: 'Have-a-Go Sessions',
@@ -28,7 +34,8 @@ export class HomeComponent implements OnInit {
           }
         },
         content: `
-          Learn the core fundamentals of Nordic Walking, and experience a free session.
+          Learn the core fundamentals of Nordic Walking, and experience a introductory session.
+          <br><br>
         `
       },
       {
@@ -40,7 +47,8 @@ export class HomeComponent implements OnInit {
           data: {}
         },
         content: `
-          Learn how to use the core equipment needed for Nordic Walking and have the opportunity to hire 
+          Learn how to use the core equipment needed for Nordic Walking
+          and have the opportunity to hire
           them for each session or purchase your own.
         `
       },
@@ -55,17 +63,21 @@ export class HomeComponent implements OnInit {
           }
         },
         content: `
-          Experience a 4 session course with a group of fellow Nordic Walkers. Take your skills to the next 
+          Experience a 4 session course with a group of fellow Nordic Walkers.
+           Take your skills to the next
           level and try out the course today.
         `
       },
     ];
   }
 
+  get isBrowser(): boolean {
+    return isPlatformBrowser(this.platformId);
+  }
+
   ngOnInit() {
     this.registerForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', []],
       phoneTime: ['', []]
@@ -74,14 +86,32 @@ export class HomeComponent implements OnInit {
 
   registerSubmit(formGroup: FormGroup) {
     if (formGroup.valid) {
-      alert('Submit');
       this.submittingForm = true;
 
-      // TODO: Call EmailService
+      this.http
+        .post(`http://api.essentialnordicwalking.com.au/api/emails`, {
+          name: this.registerForm.value.name,
+          email: this.registerForm.value.email,
+          phone: this.registerForm.value.phone,
+          notes: `Preferred Phone Time: ${this.registerForm.value.phoneTime}`
+        })
+        .subscribe(
+        data => {
+          this.registerForm.reset({});
+          this.registerForm.clearValidators();
+          this.snackBar.open('Message sent successfully.', null, {
+            duration: 3000
+          });
+        },
+        error => {
+          this.snackBar.open('Error.', null, {
+            duration: 3000
+          });
+        }, () => this.submittingForm = false);
     }
   }
 
-  hasFieldError(formGroup: FormGroup, control: FormControl) {
+  hasFieldError(formGroup: FormGroup, control: AbstractControl) {
     return control.invalid && formGroup.invalid && control.touched;
   }
 }
@@ -93,3 +123,4 @@ export interface InfoCard {
   imageUrl: string;
   route: any;
 }
+
