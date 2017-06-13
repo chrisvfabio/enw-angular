@@ -1,31 +1,35 @@
-@import '../../../theme.scss';
+@import "../../variables";
 
 header {
     background-color: $primary;
 }
 
 section {
-
-    &:nth-child(odd) {
-        background-color: #eee;
+    &:nth-child(even) {
+        background-color: #fefefe;
     }
 }
 
-.avatar {
-    border-radius: 100%;
-    max-width: 300px;
-}
-
-h4 {
-    font-weight: 400;
-    font-size: 28px;
-    margin: 16px 0 0 0;
-}
-
-h5 {
-    font-weight: 500;
-    color: #333;
-    font-size: 18px;
-    margin: 8px 0 0 0;
+.avatar-container {
+    margin: 0 auto;
     text-align: center;
+
+    .avatar {
+        border-radius: 100%;
+        max-width: 300px;
+    }
+
+    h4 {
+        font-weight: 400;
+        font-size: 28px;
+        margin: 16px 0 0 0;
+    }
+
+    h5 {
+        font-weight: 500;
+        color: #333;
+        font-size: 18px;
+        margin: 8px 0 0 0;
+        text-align: center;
+    }
 }

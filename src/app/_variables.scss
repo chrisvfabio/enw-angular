@@ -1,0 +1,60 @@
+@import "../../node_modules/@angular/material/theming";
+
+$sectionHeaderBackground: #444;
+$sectionHeaderColor: #fff;
+
+$whiteBackground: #fff;
+
+// $themeColor: #F8E81C;
+
+$primary: mat-color($mat-green, 500, 1);
+$accent: mat-color($mat-deep-orange, 500, 1);
+$warn: mat-color($mat-red, 500, 1);
+
+.hidden {
+    display: none;
+}
+
+// xs
+@media screen and (max-width: 35.5em) {
+    .show-xs {
+        display: block !important;
+    }
+
+    .hidden-xs {
+        display: none;
+    }
+}
+
+// sm >
+@media screen and (max-width: 48em) {
+    .show-sm {
+        display: block !important;
+    }
+
+    .hidden-sm {
+        display: none !important;
+    }
+}
+
+// md >
+@media screen and (max-width: 64em) {
+    .show-md {
+        display: block !important;
+    }
+
+    .hidden-md {
+        display: none;
+    }
+}
+
+// lg >
+@media screen and (max-width: 80em) {
+    .show-lg {
+        display: block;
+    }
+
+    .hidden-lg {
+        display: none;
+    }
+}

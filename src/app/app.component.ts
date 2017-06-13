@@ -1,19 +1,17 @@
-import { Component } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TransferState } from '../modules/transfer-state/transfer-state';
 
 @Component({
   selector: 'enw-root',
-  templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-   animations: [
-    trigger('fadeIn', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate(500)
-      ])
-    ]),
-  ]
+  templateUrl: './app.component.html',
+  encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
-  title = 'enw works!';
+export class AppComponent implements OnInit {
+  constructor() { }
+
+  ngOnInit() {
+  }
 }

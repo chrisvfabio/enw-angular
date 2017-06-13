@@ -4,10 +4,21 @@ footer {
     padding: 32px 16px;
 }
 
+.right-align {
+  text-align: right;
+  border-right: 1px solid #9b9b9b;
+
+  ul {
+     li {
+       text-align: right;
+     }
+  }
+}
+
 .content {
     max-width: 956px !important;
     margin: 0 auto;
-    
+
 }
 
 ul {

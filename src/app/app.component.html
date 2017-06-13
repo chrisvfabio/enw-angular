@@ -1,32 +1,29 @@
-<!--[if lt IE 10]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-<div @fadeIn>
-    <enw-toolbar (menuToggle)="sidenav.toggle()"></enw-toolbar>
-    <md-sidenav-container>
-        <md-sidenav #sidenav>
-            <div class="toolbar-margin"></div>
-            <md-nav-list>
-                <h3 md-subheader>Navigation</h3>
-                <a md-list-item routerLink="/" (click)="sidenav.close()">Home</a>
-                <a md-list-item routerLink="/about" (click)="sidenav.close()">About</a>
-                <a md-list-item routerLink="/services" (click)="sidenav.close()">Services</a>
-                <a md-list-item routerLink="/products" (click)="sidenav.close()">Products</a>
-                <a md-list-item  href="http://www.mynordicsports.com.au/index.php/faq/" target="_blank" (click)="sidenav.close()">FAQs</a>
-                
-                <span>
-                    <md-divider></md-divider>
-                    <a md-list-item routerLink="/admin/dashboard" (click)="sidenav.close()">Dashboard</a>
-                </span>
+<enw-toolbar (menuToggle)="sidenav.toggle()"></enw-toolbar>
+<md-sidenav-container>
+  <md-sidenav #sidenav>
+    <div class="toolbar-margin"></div>
+    <md-nav-list *ngIf="false">
+      <h3 md-subheader>Navigation</h3>
+      <a md-list-item routerLink="/" (click)="sidenav.close()">Home</a>
+      <a md-list-item routerLink="/about" (click)="sidenav.close()">About</a>
+      <a md-list-item routerLink="/services" (click)="sidenav.close()">Services</a>
+      <a md-list-item routerLink="/products" (click)="sidenav.close()">Products</a>
+      <a md-list-item href="http://www.mynordicsports.com.au/index.php/faq/" target="_blank" (click)="sidenav.close()">FAQs</a>
 
-                <md-divider></md-divider>
-                <a md-list-item routerLink="/login" (click)="sidenav.close()">Login</a>
-                <a md-list-item routerLink="/logout" (click)="sidenav.close()">Logout</a>
-            </md-nav-list>
-        </md-sidenav>
-        <div class="content toolbar-margin">
-            <router-outlet></router-outlet>
-            <enw-footer></enw-footer>
-        </div>
-    </md-sidenav-container>
-</div>
+      <div>
+        <md-divider></md-divider>
+        <!--<a md-list-item routerLink="/admin/dashboard" (click)="sidenav.close()">Dashboard</a>-->
+      </div>
+
+      <md-divider></md-divider>
+      <!--<a md-list-item routerLink="/login" (click)="sidenav.close()">Login</a>-->
+      <!--<a md-list-item routerLink="/logout" (click)="sidenav.close()">Logout</a>-->
+    </md-nav-list>
+  </md-sidenav>
+  <div class="toolbar-margin">
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <enw-footer></enw-footer>
+  </div>
+</md-sidenav-container>

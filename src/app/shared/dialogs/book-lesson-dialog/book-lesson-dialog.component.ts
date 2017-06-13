@@ -1,7 +1,8 @@
+import { Http } from '@angular/http';
+import { Lesson } from '../../../main/services/services.component';
 import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Lesson } from 'app/main/services/services.component';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
+import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'enw-book-lesson-dialog',
@@ -15,7 +16,9 @@ export class BookLessonDialogComponent implements OnInit {
   lesson: Lesson;
 
   constructor(private _dialogRef: MdDialogRef<BookLessonDialogComponent>,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private http: Http,
+    private snackBar: MdSnackBar) { }
 
   ngOnInit() {
     if (!this.lesson) {
@@ -33,10 +36,33 @@ export class BookLessonDialogComponent implements OnInit {
   bookLessonSubmit(formGroup: FormGroup) {
     if (formGroup.valid) {
       this.submittingForm = true;
+
+      this.http
+        .post(`http://api.essentialnordicwalking.com.au/api/emails`, {
+          name: this.bookLessonForm.value.name,
+          email: this.bookLessonForm.value.email,
+          phone: this.bookLessonForm.value.phone,
+          notes: `Service: ${this.lesson.name};
+            Hire Equipment: ${this.bookLessonForm.value.hireEquipment ? 'Yes' : 'No'}`
+        })
+        .subscribe(
+        data => {
+          this.bookLessonForm.reset({});
+          this.bookLessonForm.clearValidators();
+          this.snackBar.open('Enquiry sent successfully.', null, {
+            duration: 3000
+          });
+          this._dialogRef.close();
+        },
+        error => {
+          this.snackBar.open('Error.', null, {
+            duration: 3000
+          });
+        }, () => this.submittingForm = false);
     }
   }
 
-  hasFieldError(formGroup: FormGroup, control: FormControl) {
+  hasFieldError(formGroup: FormGroup, control: AbstractControl) {
     return control.invalid && formGroup.invalid && control.touched;
   }
 

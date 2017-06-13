@@ -1,3 +1,35 @@
-<p>
-  products works!
-</p>
+<header class="hero-mini">
+  <div class="grid grid-header">
+    <div class="col-12">
+      <h1>Products</h1>
+    </div>
+  </div>
+</header>
+<md-progress-bar *ngIf="loading" mode="indeterminate" color="accent"></md-progress-bar>
+
+<section>
+  <md-grid-list class="hidden-xs" cols="3">
+    <md-grid-tile *ngFor="let product of products">
+      <md-grid-tile-header>
+        {{ product.price | currency:'USD':true }}
+      </md-grid-tile-header>
+      <img [src]="product.imageUrl" [alt]="product.name">
+      <md-grid-tile-footer>
+        <h3 md-line>{{product.name}}</h3>
+        <p md-line>{{product.brand}}</p>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+  <md-grid-list class="show-xs hidden" cols="1">
+    <md-grid-tile *ngFor="let product of products">
+      <md-grid-tile-header>
+        {{ product.price | currency:'USD':true }}
+      </md-grid-tile-header>
+      <img [src]="product.imageUrl" [alt]="product.name">
+      <md-grid-tile-footer>
+        <h3 md-line>{{product.name}}</h3>
+        <p md-line>{{product.brand}}</p>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+</section>

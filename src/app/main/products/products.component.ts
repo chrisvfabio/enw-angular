@@ -1,3 +1,4 @@
+import { Http } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  loading: boolean;
+  products: Product[];
+
+  constructor(private http: Http) { }
 
   ngOnInit() {
+    this.loading = true;
+    this.http
+      .get(`http://api.essentialnordicwalking.com.au/api/products`)
+      .map(res => res.json())
+      .subscribe(
+      data => {
+        this.products = data;
+      },
+      error => {
+      }, () => this.loading = false);
   }
 
+}
+
+export interface Product {
+  id: number;
+  name: string;
+  brand: string;
+  description: string;
+  imageUrl: string;
+  price: number;
 }

@@ -1,10 +1,13 @@
+@import '../../variables';
 @import '~@angular/material/theming';
-@import '../../../theme.scss';
 
 $whiteBackground: #fafafa;
 
 .hero {
     background-color: $primary;
+    h1, h2 {
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
 }
 
 md-card.enw-card {
@@ -24,13 +27,14 @@ md-card.enw-card {
   md-card-content {
     font-size: 16px;
   }
-} 
+}
 
 .register-form {
   width: 100%;
   max-width: 448px;
   margin: 0 auto;
-  
+  position: relative;
+
 
   .form-errors {
     color: $warn;
@@ -40,10 +44,6 @@ md-card.enw-card {
     height: 48px;
     background-color: $primary;
     color: #fff;
-  }
-
-  md-input-container {
-    margin: 8px 0;
   }
 
   button {
@@ -59,10 +59,6 @@ md-card.enw-card {
       cursor: not-allowed;
     }
   }
-
-  .input-container {
-    position: relative;
-  }
 }
 
 .loading-overlay {
@@ -75,11 +71,14 @@ md-card.enw-card {
   background-color: $whiteBackground;
 
   md-spinner {
+    margin: 0 auto;
     width: 48px;
   }
 
   span {
     color: #777;
     font-weight: 500;
+    text-align: center;
+    display: block;
   }
 }

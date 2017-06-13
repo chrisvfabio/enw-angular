@@ -1,5 +1,5 @@
-@import '~@angular/material/theming';
-@import '../../../theme.scss';
+@import "~@angular/material/theming";
+@import "../../variables";
 
 header {
     background-color: $primary;
@@ -11,100 +11,97 @@ section {
     }
 }
 
-
-
-
 .form {
-  width: 100%;
-  max-width: 448px;
-  margin: 0 auto;
-  
+    width: 100%;
+    max-width: 448px;
+    margin: 0 auto;
 
-  .form-errors {
-    color: $warn;
-  }
-
-  .submit {
-    height: 48px;
-    background-color: $primary;
-    color: #fff;
-  }
-
-  md-input-container {
-    margin: 8px 0;
-  }
-
-  button {
-    background-color: $primary;
-    color: #fff;
-    height: 48px;
-    transition: background-color ease-in 150ms;
-    transition: color ease-in 150ms;
-
-    &[disabled] {
-      background-color: #999;
-      color: #fff;
-      cursor: not-allowed;
+    .form-errors {
+        color: $warn;
     }
-  }
 
-  .input-container {
-    position: relative;
-  }
+    .submit {
+        height: 48px;
+        background-color: $primary;
+        color: #fff;
+    }
+
+    button {
+        background-color: $accent;
+        color: #fff;
+        width: 100%;
+        height: 42px;
+        transition: background-color ease-in 150ms;
+        transition: color ease-in 150ms;
+
+        &[disabled] {
+            background-color: #999;
+            color: #fff;
+            cursor: not-allowed;
+        }
+    }
+
+    .input-container {
+        position: relative;
+    }
 }
 
 .loading-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  background-color: $whiteBackground;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background-color: $whiteBackground;
 
-  md-spinner {
-    width: 48px;
-  }
+    md-spinner {
+        width: 48px;
+    }
 
-  span {
-    color: #777;
-    font-weight: 500;
-  }
+    span {
+        color: #777;
+        font-weight: 500;
+    }
 }
 
+.lessons-group {
+    overflow-x: auto;
+    margin: 16px 0;
+    padding: 8px;
+    flex-wrap: nowrap;
 
-.lessons-group{
-  overflow-x: scroll;
-  margin: 16px 0;
-  padding: 8px;
+    md-card.lesson {
+        min-height: 656px;
+        padding: 12px;
+        min-width: 420px;
+        margin: 0 16px;
 
-  md-card.lesson {
-    min-height: 656px;
-    padding: 12px;
+        &:hover {
+            @include mat-elevation(8);
 
-    &:hover {
-      @include mat-elevation(8);
-      cursor: pointer;
+            cursor: pointer;
+        }
+
+        .mat-card-image {
+            width: calc(100% + 24px);
+            margin: -12px -12px 20px -12px;
+        }
+
+        md-card-content {
+            font-size: 16px;
+            overflow-y: auto;
+        }
+
+        md-card-footer {
+            box-sizing: border-box;
+            padding: 16px;
+
+            button {
+                width: 100%;
+                height: 48px;
+                border: 2px solid #efefef;
+            }
+        }
     }
-
-    .mat-card-image {
-      width: calc(100% + 24px);
-      margin: -12px -12px 20px -12px;
-    }
-
-    md-card-content {
-      font-size: 16px;
-      overflow-y: auto;
-    }
-
-    md-card-actions {
-      padding: 16px;
-
-      button {
-        width: 100%;
-        height: 48px;
-        border: 2px solid #efefef;
-      }
-    }
-  }
 }

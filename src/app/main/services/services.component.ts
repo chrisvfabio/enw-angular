@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { BackendService } from 'app/shared/backend.service';
-import { MdDialog } from '@angular/material';
-import { BookLessonDialogComponent } from 'app/shared/dialogs/book-lesson-dialog/book-lesson-dialog.component';
+import { Http } from '@angular/http';
+import { isPlatformBrowser } from '@angular/common';
+import { BackendService } from '../../shared/backend.service';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { MdDialog, MdSnackBar } from '@angular/material';
+import { BookLessonDialogComponent }
+  from '../../shared/dialogs/book-lesson-dialog/book-lesson-dialog.component';
 
 @Component({
   selector: 'enw-services',
@@ -19,7 +22,15 @@ export class ServicesComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private backend: BackendService,
-    public _dialog: MdDialog) { }
+    public _dialog: MdDialog,
+    private http: Http,
+    private snackBar: MdSnackBar,
+    @Inject(PLATFORM_ID) public platformId: Object) {
+  }
+
+  get isBrowser(): boolean {
+    return isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit() {
     this.haveAGoForm = this.fb.group({
@@ -40,19 +51,55 @@ export class ServicesComponent implements OnInit {
 
   haveAGoSubmit(formGroup: FormGroup) {
     if (formGroup.valid) {
-      alert('Submit');
       this.haveAGoSubmittingForm = true;
 
-      // TODO: Call EmailService
+      this.http
+        .post(`http://api.essentialnordicwalking.com.au/api/emails`, {
+          name: this.haveAGoForm.value.name,
+          email: this.haveAGoForm.value.email,
+          phone: this.haveAGoForm.value.phone,
+          notes: `Service: Have-a-Go Session`
+        })
+        .subscribe(
+        data => {
+          this.haveAGoForm.reset({});
+          this.haveAGoForm.clearValidators();
+          this.snackBar.open('Enquiry sent successfully.', null, {
+            duration: 3000
+          });
+        },
+        error => {
+          this.snackBar.open('Error.', null, {
+            duration: 3000
+          });
+        }, () => this.haveAGoSubmittingForm = false);
     }
   }
 
   presentationSubmit(formGroup: FormGroup) {
     if (formGroup.valid) {
-      alert('Submit');
       this.presentationSubmittingForm = true;
 
-      // TODO: Call EmailService
+      this.http
+        .post(`http://api.essentialnordicwalking.com.au/api/emails`, {
+          name: this.presentationForm.value.name,
+          email: this.presentationForm.value.email,
+          phone: this.presentationForm.value.phone,
+          notes: `Service: Presentation Enquiry`
+        })
+        .subscribe(
+        data => {
+          this.presentationForm.reset({});
+          this.presentationForm.clearValidators();
+          this.snackBar.open('Enquiry sent successfully.', null, {
+            duration: 3000
+          });
+        },
+        error => {
+          this.snackBar.open('Error.', null, {
+            duration: 3000
+          });
+        }, () => this.presentationSubmittingForm = false);
     }
   }
 
@@ -71,7 +118,7 @@ export class ServicesComponent implements OnInit {
     //   });
   }
 
-  hasFieldError(formGroup: FormGroup, control: FormControl) {
+  hasFieldError(formGroup: FormGroup, control: AbstractControl) {
     return control.invalid && formGroup.invalid && control.touched;
   }
 
@@ -79,56 +126,63 @@ export class ServicesComponent implements OnInit {
     return [
       {
         id: 1,
-        name: 'Heart Foundation Walking Group',
+        name: 'Group Lessons: 4 lessons to learn Nordic Walking',
         content: `
-          <h2>REPS ROAMERS</h2> (Anyone welcome to join)
-
           <p>
-            Moderate pace walks. It is opportunity to keep Nordic Walking 
-            and meet new people. Register your interest to find out more. 
+            This lesson includes: 4 X 1hr sessions. All sessions include
+             flexibility exercises, instruction, stretching.
           </p>
 
           <p>
-            Join us after you've experienced the Have-a-Go Session. 
+            $15 pp/lesson includes pole hire.
           </p>
 
           <p>
-            * Pole Hire Price $5.00
+            Participants are encouraged to purchase their own poles so they can practise between
+            lessons. Like any new skill, it takes practise to learn.
+          </p>
+          <p>
+            Group size is kept small so participants can be assured of individual attention.
+          </p>
+          <p>
+            Course fee ($60) is payable at the beginning of the first session.
           </p>
         `,
-        thumbnailUrl: '/assets/images/baltas-patrick.jpg'
+        thumbnailUrl: '/assets/images/baltas-patrick.jpg',
+        offer: `
+          <h2>Pole and free lesson option</h2>
+          <p>
+            Order a pair of One Way brand poles and get <u>1 group lesson FREE!</u>
+          </p>
+        `
       },
       {
         id: 2,
-        name: 'Once a Week for 4 weeks',
+        name: 'Individual Lessons',
         content: `
           <p>
-            Participate in one Nordic Walks once a week for four weeks. If 
-            you're interested in being a more active Nordic Walker, then join 
-            us for 1 hour session for four weeks.
+            The 1 hour lessons include flexibility exercises, instruction and stretching.
           </p>
 
           <p>
-            * We can also come to your location if requested over the phone.
+            $60/pp includes pole hire.
+          </p>
+          <p>
+            Heather recommends a minimum of 2 lessons.
+          </p>
+          <p>
+            Participants are encouraged to purchase their own poles so they can practise
+            between lessons.
           </p>
         `,
-        thumbnailUrl: '/assets/images/vermont-south-seniors.jpg'
+        thumbnailUrl: '/assets/images/vermont-south-seniors.jpg',
+        offer: `
+          <h2>Pole and lesson discount</h2>
+          <p>
+            Order a pair of One Way brand poles and get <u>$15 OFF</u> your first individual lesson.
+          </p>
+        `
       },
-      {
-        id: 3,
-        name: '4 Weeks in 1 Walk',
-        content: `
-          <p>
-            Ready to take it to the next level? Join this 2 to 3 hour session 
-            (depending on the group size) and learn the complete technique.
-          </p>
-
-          <p>
-            * We can also come to your location if requested over the phone.
-          </p>
-        `,
-        thumbnailUrl: '/assets/images/nordic-senior3.jpg'
-      }
     ];
   }
 }
@@ -138,4 +192,5 @@ export class Lesson {
   name: string;
   content: string;
   thumbnailUrl: string;
+  offer: string;
 }

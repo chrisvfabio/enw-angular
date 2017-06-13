@@ -1,30 +1,89 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+  <title>Essential Nordic Walking</title>
+
   <meta charset="utf-8">
-  <title>EssentialNordicWalking</title>
-  <base href="/">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="">
+  <meta name="description" content="Promoting Nordic Walking to people of all ages and fitness levels in the Perth metro area. Poles available for sale or hire.">
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta property="og:url" content="https://essentialnordicwalking.com.au" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Essential Nordic Walking" />
+  <meta property="og:description" content="Promoting Nordic Walking to people of all ages and fitness levels in the Perth metro area. Poles available for sale or hire."/>
+  <meta property="og:image" content="https://essentialnordicwalking.com.au/assets/images/enw_logo_seo.png" />
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" value="Nordic Walking">
+  <meta name="twitter:title" content="Essential Nordic Walking">
+  <meta name="twitter:description" content="Promoting Nordic Walking to people of all ages and fitness levels in the Perth metro area. Poles available for sale or hire.">
+    <meta name="twitter:image" content="https://essentialnordicwalking.com.au/assets/images/enw_logo_seo.png">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/assets/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <base href="/">
+
+    <link href="//cdn.muicss.com/mui-0.9.16/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gridlex/2.3.1/gridlex.min.css">
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      #str-dlls {
+        display: none
+      }
+    </style>
 </head>
 
 <body>
+  <enw-root></enw-root>
+
   <div id="fb-root"></div>
   <script>
     (function (d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.6";
+      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   </script>
 
-  <enw-root></enw-root>
+  <script type="text/javascript" src="hammer.min.js"></script>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=console.*,Intl.~locale.en&gated=1"></script>
+
+  <div id="str-dlls">
+    <%= '<' %>script src="/polyfill.dll.js"
+      <%= '>' %>
+        <%= '<' %>/script
+          <%= '>' %>
+            <%= '<' %>script src="/vendor.dll.js"
+              <%= '>' %>
+                <%= '<' %>/script
+                  <%= '>' %>
+  </div>
+  <script src="/index.js"></script>
 </body>
 
 </html>

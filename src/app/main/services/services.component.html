@@ -1,174 +1,158 @@
-<header class="hero-mini" fxLayout="column" fxLayoutAlign="center center">
-  <h1>Services</h1>
+<header class="hero-mini">
+  <div class="grid grid-header">
+    <div class="col-12">
+      <h1>Services</h1>
+    </div>
+  </div>
 </header>
 
-<!-- Have-a-Go Session -->
-<section fxLayout="column">
-  <div class="wrapper">
-    <div>
+<section>
+  <div class="grid grid-header">
+    <div class="col-12">
       <h2 class="heading">Have-a-Go Session</h2>
       <h3 class="sub-heading">New to Nordic Walking? Join the Have-a-go Session to get started.</h3>
     </div>
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutWrap>
-      <div fxFlex="50" fxFlex.sm="100">
-        <div fxLayout="column">
-          <div fxLayout="row" fxLayoutAlign="center start" fxLayoutAlign.gt-sm="start start" >
-            <img src="/assets/images/nordic-senior2.jpg" alt="Nordic Walking - Senior Walker Participant" style="width: 300px" style.xs="width: 100%">
-          </div>
+  </div>
 
-          <p>
-            $10<sup>*</sup> for 30 minute introduction to Nordic Walking.
-            <br> Includes:
-            <br>
-            <br>
-            <li>Hire of poles;</li>
-            <li>Brochure;</li>
-            <br>This is an
-            <u>introduction</u> to the activity. Heather gives participants an overview of the origins of the activity, equipment
-            and health benefits. Participants have the opportunity to have a go.
-          </p>
-          <p>
-            <small><sup>*</sup>$10 for both individual and groups.</small>
-          </p>
+  <div class="grid">
+    <div class="col">
+      <img src="/assets/images/nordic-senior2.jpg" alt="Nordic Walking - Senior Walker Participant" style="width: 300px" style.xs="width: 100%">
+      <br><br>
+      <p>
+        $10<sup>*</sup> for 30 minute introduction to Nordic Walking.
+        <br> Includes:
+        <br>
+        <br>
+        <li>Hire of poles;</li>
+        <li>Brochure;</li>
+        <br>This is an
+        <u>introduction</u> to the activity. Heather gives participants an overview of the origins of the activity, equipment
+        and health benefits. Participants have the opportunity to have a go.
+      </p>
+      <p>
+        <small><sup>*</sup>$10 for both individual and groups.</small>
+      </p>
+    </div>
+    <div class="col">
+      <form *ngIf="isBrowser" [formGroup]="haveAGoForm" (ngSubmit)="haveAGoSubmit(haveAGoForm)" class="grid form">
+        <!-- Loading -->
+        <div class="loading-overlay" *ngIf="haveAGoSubmittingForm" fxLayout="column" fxLayoutAlign="center center">
+          <md-spinner color="accent"></md-spinner>
+          <span>Submitting Form....</span>
         </div>
-      </div>
-      <span fxFlex="1"></span>
-      <div fxFlex="45" fxFlex.xs="100">
-        <div fxLayout="column" fxLayoutAlign="center center">
-          <form [formGroup]="haveAGoForm" (ngSubmit)="haveAGoSubmit(haveAGoForm)" class="form" fxLayout="column" fxLayoutGap="16px">
-            <div class="input-container" fxLayout="column">
-              <!-- Loading -->
-              <div class="loading-overlay" [fxShow]="haveAGoSubmittingForm" fxLayout="column" fxLayoutAlign="center center">
-                <md-spinner color="accent"></md-spinner>
-                <span>Submitting Form....</span>
-              </div>
 
-              <!-- Name -->
-              <md-input-container [ngClass]="{ 'form-errors': hasFieldError(haveAGoForm, haveAGoForm.controls.name) }">
-                <input mdInput formControlName="name" placeholder="Name" autocomplete="off">
-                <md-hint *ngIf="hasFieldError(haveAGoForm, haveAGoForm.controls.name) && haveAGoForm.controls.name.hasError('required')">
-                  Please enter your name.
-                </md-hint>
-              </md-input-container>
+        <!-- Name -->
+        <md-input-container class="col-12" [ngClass]="{ 'form-errors': hasFieldError(haveAGoForm, haveAGoForm.get('name')) }">
+          <input mdInput formControlName="name" placeholder="Name" autocomplete="off">
+          <md-hint *ngIf="hasFieldError(haveAGoForm, haveAGoForm.get('name')) && haveAGoForm.get('name').hasError('required')">
+            Please enter your name.
+          </md-hint>
+        </md-input-container>
 
-              <!-- Email -->
-              <md-input-container [ngClass]="{ 'form-errors': hasFieldError(haveAGoForm, haveAGoForm.controls.email) }">
-                <input mdInput formControlName="email" placeholder="Email" autocomplete="off">
-                <md-hint *ngIf="hasFieldError(haveAGoForm, haveAGoForm.controls.email) && haveAGoForm.controls.email.hasError('required')">
-                  Please enter your email address.
-                </md-hint>
-                <md-hint *ngIf="hasFieldError(haveAGoForm, haveAGoForm.controls.email) && haveAGoForm.controls.email.hasError('pattern')">
-                  Please enter a valid email address.
-                </md-hint>
-              </md-input-container>
+        <!-- Email -->
+        <md-input-container class="col-12" [ngClass]="{ 'form-errors': hasFieldError(haveAGoForm, haveAGoForm.get('email')) }">
+          <input mdInput formControlName="email" placeholder="Email" autocomplete="off">
+          <md-hint *ngIf="hasFieldError(haveAGoForm, haveAGoForm.get('email')) && haveAGoForm.get('email').hasError('required')">
+            Please enter your email address.
+          </md-hint>
+          <md-hint *ngIf="hasFieldError(haveAGoForm, haveAGoForm.get('email')) && haveAGoForm.get('email').hasError('pattern')">
+            Please enter a valid email address.
+          </md-hint>
+        </md-input-container>
 
-              <!-- Phone -->
-              <md-input-container [ngClass]="{ 'form-errors': hasFieldError(haveAGoForm, haveAGoForm.controls.phone) }">
-                <input mdInput formControlName="phone" placeholder="Phone (Optional)" autocomplete="off">
-              </md-input-container>
+        <!-- Phone -->
+        <md-input-container class="col-12" [ngClass]="{ 'form-errors': hasFieldError(haveAGoForm, haveAGoForm.get('phone')) }">
+          <input mdInput formControlName="phone" placeholder="Phone (Optional)" autocomplete="off">
+        </md-input-container>
 
-            </div>
-
-            <button md-button [disabled]="haveAGoSubmittingForm" color="primary">SEND ENQUIRY</button>
-          </form>
-        </div>
-      </div>
+        <button md-button [disabled]="haveAGoSubmittingForm">SEND ENQUIRY</button>
+      </form>
     </div>
   </div>
 </section>
 
-<section fxLayout="column">
-  <div class="wrapper-fluid">
-    <div>
+<section>
+  <div class="grid grid-header">
+    <div class="col-12">
       <h2 class="heading">Our Classes</h2>
       <h3 class="sub-heading">Participate in a group or invidial sessions.</h3>
     </div>
+  </div>
+  <div class="grid lessons-group">
+    <md-card class="col lesson" fxLayout="column" fxFlex="440px" fxFlex.sm="330px" *ngFor="let lesson of lessons">
+      <img md-card-image [src]="lesson.thumbnailUrl" [alt]="lesson.name">
+      <md-card-title>{{lesson.name}}</md-card-title>
+      <md-card-content fxFlex>
+        <div [innerHtml]="lesson.content">
 
-    <div class="lessons-group" fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start start" >
-
-      <md-card class="lesson" fxLayout="column" fxFlex="440px" fxFlex.sm="330px" *ngFor="let lesson of lessons">
-        <img md-card-image [src]="lesson.thumbnailUrl" [alt]="lesson.name">
-        <md-card-title>{{lesson.name}}</md-card-title>
-        <md-card-content fxFlex>
-          <div [innerHtml]="lesson.content">
-            
-          </div>
-        </md-card-content>
-        <md-card-actions>
-          <button md-button (click)="openBookingClassesDialog(lesson)">SELECT CLASS</button>
-        </md-card-actions>
-      </md-card>
-    </div>
+        </div>
+      </md-card-content>
+      <md-card-footer>
+        <button md-button (click)="openBookingClassesDialog(lesson)">BOOK CLASS</button>
+      </md-card-footer>
+    </md-card>
   </div>
 </section>
 
-<!-- Presentations -->
-<section fxLayout="column">
-  <div class="wrapper">
-    <div>
+<section>
+  <div class="grid grid-header">
+    <div class="col-12">
       <h2 class="heading">Presentations</h2>
       <h3 class="sub-heading">Seeking speakers for a presentations or conference? Let's get in touch.</h3>
     </div>
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutWrap>
-      <div fxFlex="50" fxFlex.xs="100">
-        <div fxLayout="column">
-          <p>
-            Presentations are suitable for Service Clubs and Social Groups and it is free of charge. I offer 30 minute presentations
-            on the general background of Nordic Walking and the benefits Nordic Walking can have on your physical and mental
-            health.
-          </p>
-          <p>
-            Contact me today to find out more about presentations and what I offer.
-            <br><br> Enter your details in the form provided and I will contact you back via phone or email as soon as possible.
-          </p>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <p>
+        Presentations are suitable for Service Clubs and Social Groups and it is free of charge. I offer 30 minute presentations
+        on the general background of Nordic Walking and the benefits Nordic Walking can have on your physical and mental
+        health.
+      </p>
+      <p>
+        Contact me today to find out more about presentations and what I offer.
+        <br><br> Enter your details in the form provided and I will contact you back via phone or email as soon as possible.
+      </p>
+    </div>
+    <div class="col">
+      <form *ngIf="isBrowser" [formGroup]="presentationForm" (ngSubmit)="presentationSubmit(presentationForm)" class="form grid">
+        <!-- Loading -->
+        <div class="loading-overlay" *ngIf="presentationSubmittingForm">
+          <md-spinner color="accent"></md-spinner>
+          <span>Submitting Form....</span>
         </div>
-      </div>
-      <span fxFlex="5"></span>
-      <div fxFlex="40" fxFlex.xs="100">
-        <div fxLayout="column" fxLayoutAlign="center center">
-          <form [formGroup]="presentationForm" (ngSubmit)="presentationSubmit(presentationForm)" class="form" fxLayout="column" fxLayoutGap="16px">
-            <div class="input-container" fxLayout="column">
-              <!-- Loading -->
-              <div class="loading-overlay" [fxShow]="presentationSubmittingForm" fxLayout="column" fxLayoutAlign="center center">
-                <md-spinner color="accent"></md-spinner>
-                <span>Submitting Form....</span>
-              </div>
 
-              <!-- Name -->
-              <md-input-container [ngClass]="{ 'form-errors': hasFieldError(presentationForm, presentationForm.controls.name) }">
-                <input mdInput formControlName="name" placeholder="Name" autocomplete="off">
-                <md-hint *ngIf="hasFieldError(presentationForm, presentationForm.controls.name) && presentationForm.controls.name.hasError('required')">
-                  Please enter your name.
-                </md-hint>
-              </md-input-container>
+        <!-- Name -->
+        <md-input-container class="col-12" [ngClass]="{ 'form-errors': hasFieldError(presentationForm, presentationForm.get('name')) }">
+          <input mdInput formControlName="name" placeholder="Name" autocomplete="off">
+          <md-hint *ngIf="hasFieldError(presentationForm, presentationForm.get('name')) && presentationForm.get('name').hasError('required')">
+            Please enter your name.
+          </md-hint>
+        </md-input-container>
 
-              <!-- Email -->
-              <md-input-container [ngClass]="{ 'form-errors': hasFieldError(presentationForm, presentationForm.controls.email) }">
-                <input mdInput formControlName="email" placeholder="Email" autocomplete="off">
-                <md-hint *ngIf="hasFieldError(presentationForm, presentationForm.controls.email) && presentationForm.controls.email.hasError('required')">
-                  Please enter your email address.
-                </md-hint>
-                <md-hint *ngIf="hasFieldError(presentationForm, presentationForm.controls.email) && presentationForm.controls.email.hasError('pattern')">
-                  Please enter a valid email address.
-                </md-hint>
-              </md-input-container>
+        <!-- Email -->
+        <md-input-container class="col-12" [ngClass]="{ 'form-errors': hasFieldError(presentationForm, presentationForm.get('email')) }">
+          <input mdInput formControlName="email" placeholder="Email" autocomplete="off">
+          <md-hint *ngIf="hasFieldError(presentationForm, presentationForm.get('email')) && presentationForm.get('email').hasError('required')">
+            Please enter your email address.
+          </md-hint>
+          <md-hint *ngIf="hasFieldError(presentationForm, presentationForm.get('email')) && presentationForm.get('email').hasError('pattern')">
+            Please enter a valid email address.
+          </md-hint>
+        </md-input-container>
 
-              <!-- Organisation Name -->
-              <md-input-container [ngClass]="{ 'form-errors': hasFieldError(presentationForm, presentationForm.controls.organisationName) }">
-                <input mdInput formControlName="organisationName" placeholder="Organisation Name (Optional)" autocomplete="off">
-              </md-input-container>
+        <!-- Organisation Name -->
+        <md-input-container class="col-12" [ngClass]="{ 'form-errors': hasFieldError(presentationForm, presentationForm.get('organisationName')) }">
+          <input mdInput formControlName="organisationName" placeholder="Organisation Name (Optional)" autocomplete="off">
+        </md-input-container>
 
-              <!-- Phone -->
-              <md-input-container [ngClass]="{ 'form-errors': hasFieldError(presentationForm, presentationForm.controls.phone) }">
-                <input mdInput formControlName="phone" placeholder="Phone (Optional)" autocomplete="off">
-              </md-input-container>
+        <!-- Phone -->
+        <md-input-container class="col-12" [ngClass]="{ 'form-errors': hasFieldError(presentationForm, presentationForm.get('phone')) }">
+          <input mdInput formControlName="phone" placeholder="Phone (Optional)" autocomplete="off">
+        </md-input-container>
 
-            </div>
-
-            <button md-button [disabled]="presentationSubmittingForm" color="primary">SEND ENQUIRY</button>
-          </form>
-        </div>
-      </div>
+        <button md-button [disabled]="presentationSubmittingForm">SEND ENQUIRY</button>
+      </form>
     </div>
   </div>
 </section>
